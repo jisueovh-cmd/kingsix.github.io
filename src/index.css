@@ -1,0 +1,256 @@
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-heading: 'Gowun Batang', 'Nanum Myeongjo', serif;
+  --font-body: 'Gowun Dodum', 'Apple SD Gothic Neo', sans-serif;
+  --font-label: 'Gowun Dodum', 'Apple SD Gothic Neo', sans-serif;
+
+  /* background — warm cream canvas */
+  --background-50: 0.985 0.010 85;
+  --background-100: 0.968 0.018 85;
+  --background-200: 0.938 0.028 85;
+  --background-300: 0.900 0.038 85;
+  --background-400: 0.850 0.045 85;
+  --background-500: 0.795 0.050 85;
+  --background-600: 0.700 0.048 85;
+  --background-700: 0.600 0.042 85;
+  --background-800: 0.490 0.035 85;
+  --background-900: 0.390 0.028 85;
+  --background-950: 0.290 0.022 85;
+
+  /* primary — warm terracotta / amber */
+  --primary-50: 0.970 0.020 50;
+  --primary-100: 0.935 0.045 50;
+  --primary-200: 0.885 0.075 50;
+  --primary-300: 0.820 0.110 50;
+  --primary-400: 0.760 0.140 50;
+  --primary-500: 0.690 0.160 50;
+  --primary-600: 0.600 0.150 48;
+  --primary-700: 0.510 0.130 46;
+  --primary-800: 0.420 0.105 46;
+  --primary-900: 0.350 0.085 46;
+  --primary-950: 0.260 0.060 46;
+
+  /* accent — sage green */
+  --accent-50: 0.970 0.018 150;
+  --accent-100: 0.940 0.035 150;
+  --accent-200: 0.890 0.058 150;
+  --accent-300: 0.830 0.080 150;
+  --accent-400: 0.760 0.100 150;
+  --accent-500: 0.660 0.110 150;
+  --accent-600: 0.570 0.100 150;
+  --accent-700: 0.480 0.085 150;
+  --accent-800: 0.395 0.068 150;
+  --accent-900: 0.330 0.055 150;
+  --accent-950: 0.245 0.040 150;
+
+  /* secondary — soft clay / taupe */
+  --secondary-50: 0.968 0.012 60;
+  --secondary-100: 0.935 0.022 60;
+  --secondary-200: 0.880 0.032 60;
+  --secondary-300: 0.810 0.040 60;
+  --secondary-400: 0.720 0.046 60;
+  --secondary-500: 0.610 0.048 60;
+  --secondary-600: 0.520 0.045 60;
+  --secondary-700: 0.435 0.040 60;
+  --secondary-800: 0.355 0.034 60;
+  --secondary-900: 0.290 0.028 60;
+  --secondary-950: 0.210 0.020 60;
+
+  /* foreground — warm dark ink */
+  --foreground-50: 0.965 0.008 70;
+  --foreground-100: 0.925 0.012 70;
+  --foreground-200: 0.860 0.016 70;
+  --foreground-300: 0.770 0.018 70;
+  --foreground-400: 0.640 0.020 70;
+  --foreground-500: 0.520 0.020 70;
+  --foreground-600: 0.430 0.020 70;
+  --foreground-700: 0.355 0.020 70;
+  --foreground-800: 0.290 0.018 70;
+  --foreground-900: 0.240 0.016 70;
+  --foreground-950: 0.185 0.014 70;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  background-color: oklch(var(--background-50));
+  color: oklch(var(--foreground-950));
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 앱처럼 보이도록 모바일에서 하단 탭바 높이만큼 본문 여백 확보 */
+@media (max-width: 1023px) {
+  body {
+    padding-bottom: calc(64px + env(safe-area-inset-bottom));
+  }
+}
+
+/* 가로 스크롤 영역 스크롤바 숨김 (모바일 카드/필터) */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.font-heading {
+  font-family: var(--font-heading);
+}
+
+.font-label {
+  font-family: var(--font-label);
+}
+
+/* anti-spam honeypot — hidden, not using obvious utility classes */
+.contact-alt-field {
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+@keyframes japari-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: japari-fade-up 0.7s ease-out both;
+}
+
+@keyframes japari-float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.animate-float {
+  animation: japari-float 5s ease-in-out infinite;
+}
+
+/* WYSIWYG 본문 / 편집기 공통 스타일 */
+.rich-text {
+  line-height: 1.8;
+  word-break: break-word;
+}
+
+.rich-text p,
+.rich-text div {
+  margin: 0.35rem 0;
+}
+
+.rich-text p:first-child,
+.rich-text div:first-child {
+  margin-top: 0;
+}
+
+.rich-text p:last-child,
+.rich-text div:last-child {
+  margin-bottom: 0;
+}
+
+.rich-text h2 {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 1rem 0 0.5rem;
+}
+
+.rich-text h3 {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 0.9rem 0 0.4rem;
+}
+
+.rich-text ul {
+  list-style: disc;
+  padding-left: 1.35rem;
+  margin: 0.5rem 0;
+}
+
+.rich-text ol {
+  list-style: decimal;
+  padding-left: 1.35rem;
+  margin: 0.5rem 0;
+}
+
+.rich-text li {
+  margin: 0.2rem 0;
+}
+
+.rich-text blockquote {
+  border-left: 4px solid oklch(var(--primary-300));
+  background-color: oklch(var(--background-100));
+  border-radius: 0 0.375rem 0.375rem 0;
+  padding: 0.6rem 1rem;
+  margin: 0.6rem 0;
+  color: oklch(var(--foreground-700));
+}
+
+.rich-text a {
+  color: oklch(var(--primary-700));
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  word-break: break-all;
+}
+
+.rich-text code {
+  background-color: oklch(var(--background-100));
+  padding: 0.1rem 0.35rem;
+  border-radius: 0.25rem;
+  font-size: 0.85em;
+  color: oklch(var(--primary-700));
+}
+
+.rich-text img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  max-height: 560px;
+  object-fit: cover;
+  object-position: top;
+  border: 1px solid oklch(var(--background-200));
+  border-radius: 0.5rem;
+  margin: 0.75rem 0;
+}
+
+.rich-text iframe.yt-embed {
+  display: block;
+  width: 100%;
+  max-width: 42rem;
+  aspect-ratio: 16 / 9;
+  border: 0;
+  border-radius: 0.5rem;
+  margin: 0.75rem 0;
+  background-color: oklch(var(--foreground-950));
+}
+
+.rich-text hr {
+  border: 0;
+  border-top: 1px solid oklch(var(--background-200));
+  margin: 1rem 0;
+}
