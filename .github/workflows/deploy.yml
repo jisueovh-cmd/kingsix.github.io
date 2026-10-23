@@ -31,27 +31,18 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      
       - name: Build
-        run: |
-          npm run build
-          echo "----- Current directory -----"
-          pwd
-          echo "----- Build output -----"
-          ls -la
-          echo "----- dist directory -----"
-          ls -la dist
+        run: npm run build
         env:
           VITE_PUBLIC_SUPABASE_URL: ${{ secrets.VITE_PUBLIC_SUPABASE_URL }}
           VITE_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.VITE_PUBLIC_SUPABASE_ANON_KEY }}
           VITE_PUBLIC_KAKAO_CLIENT_ID: ${{ secrets.VITE_PUBLIC_KAKAO_CLIENT_ID }}
           VITE_PUBLIC_NAVER_CLIENT_ID: ${{ secrets.VITE_PUBLIC_NAVER_CLIENT_ID }}
 
-
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: dist
+          path: out
 
   deploy:
     environment:
